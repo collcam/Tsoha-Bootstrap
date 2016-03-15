@@ -1,7 +1,7 @@
 # Muistilistan esittelysivu
 
 * [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://raw.githubusercontent.com/collcam/Tsoha-Bootstrap/master/doc/dokumentaatio.md)
+* [Linkki dokumentaatiooni](https://githubusercontent.com/collcam/Tsoha-Bootstrap/master/doc/dokumentaatio.md)
 
 ## Työn aihe
 
