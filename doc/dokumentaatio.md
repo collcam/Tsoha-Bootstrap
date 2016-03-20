@@ -21,4 +21,28 @@ Ympäristönä toimii users-pallin Apachella. Tuettu ohjelmointikieli on PHP. Ky
 
 -Askareella voi olla usampi aiheryhmä mutta vain yksi tärkeysluokka.
 
+##Käyttäjäryhmät##
+
+Käyttäjä
+    Yksittäinen henkilö joka on rekisteröitynyt muistilistan käyttäjäksi.
+    Kaikki käyttäjät kuuluvat ähän ryhmään, jottei kukaan saa lupaa tarkastella muiden 
+    muistilistoja.
+    
+##Käyttötapauskuvaukset##
+
+Käyttäjän käyttötapaukset:
+
+    1. Askareen muokkaus: Käyttäjä voi lisätä poistaa tai muokata nykyisiä askareitaan.
+    Askareelle voidaan antaa halutessa tärkeysluokka ja aiheryhmiä. Tärkeysluokkia voi 
+    valita vain yhden mutta aiheryhmiä voi olla useampia yhdellä askareella.
+    
+    2. Kirjautuminen: Käyttäjä aluksi kirjautuu jäjestelmään, jotta hän pääsee käsiksi                
+    henkilökohtaiseen muistilistaansa. 
+    
+    3. Muistilistasta haku: Käyttäjä voi hakea Muistilistastaan askaretta aiheryhmän,
+    tärkeysluokan tai askareen nimen perusteella. 
+    
+    4. Muistilistan selaaminen: Käyttäjä voi tarkastella omaa muistilistaansa.
+    
+    muut käyttötapaukset: rekisteröityminen
 
