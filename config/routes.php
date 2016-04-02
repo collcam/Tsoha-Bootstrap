@@ -1,9 +1,22 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+      MuistilistaController::etusivu();
   });
 
-  $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+  $routes->get('/kirjautuminen', function() {
+      MuistilistaController::kirjautuminen();
   });
+  $routes->get('/etsi', function() {
+      MuistilistaController::EtsiAskare();
+  });
+  $routes->get('/listaa_askareet', function() {
+      MuistilistaController::Listaa_askareet();
+  });
+  $routes->get('/lisaa_askare', function() {
+      MuistilistaController::lisaaAskare();
+  });
+  $routes->get('/muokkaa', function() {
+      MuistilistaController::Askare_muokkaussivu();
+  });
+  

@@ -9,6 +9,9 @@ Ympäristönä toimii users-pallin Apachella. Tuettu ohjelmointikieli on PHP. Ky
 
 ##Toiminnot##
 
+Käyttäjän toiminnot:
+
+
 -Kirjautuminen 
 
 -Askareen lisäys,muokkaus ja poisto
@@ -21,6 +24,14 @@ Ympäristönä toimii users-pallin Apachella. Tuettu ohjelmointikieli on PHP. Ky
 
 -Askareella voi olla usampi aiheryhmä mutta vain yksi tärkeysluokka.
 
+Ylläpitäjän toiminnot:
+
+
+-Kirjautuminen
+
+-käyttäjien hallinta: selaus ja poisto
+
+
 ##Käyttäjäryhmät##
 
 Käyttäjä
@@ -28,6 +39,13 @@ Käyttäjä
     Kaikki käyttäjät kuuluvat ähän ryhmään, jottei kukaan saa lupaa tarkastella muiden 
     muistilistoja.
     
+Ylläpitäjä
+    Henkilö joka on vastuussa ylläpidosta. Hän voi olla myös käyttäjä, mutta 
+    ylläpitäjänö kirjautuessaan hän ei pääse käsiksi omiin muistilistoihinsa joten 
+    hänen on kirjauduttava toisella käyttäjätunnuksella ollaseen käyttäjä. Ylläpitäjä 
+    hallinnoi käyttäjiä ja voi poistaa niitä tarvittaessa.
+    
+        
 ##Käyttötapauskuvaukset##
 
 Käyttäjän käyttötapaukset:
@@ -45,4 +63,71 @@ Käyttäjän käyttötapaukset:
     4. Muistilistan selaaminen: Käyttäjä voi tarkastella omaa muistilistaansa.
     
     muut käyttötapaukset: rekisteröityminen
+    
+Ylläpitäjän käyttötapaukset:
+
+    1. Kirjautuminen sisään
+    
+    2. Käyttäjien hallinnointi: Ylläpitäjä näkee käyttäjien tiedot kuten salasanat yms. 
+    ja voi poistaa käyttäjiä.
+        
+##Tietosisältökuvaus (muotoa atribuutti: arvojoukko: kuvailu)
+
+**Tietokohde: Käyttäjä**
+                
+*Käyttäjä on rekisteröitynyt Muistilistan asiakas. Hänellä on pakko olla nimi, tunnus sekä salasana.*
+
+Nimi : merkkijono max 70 merkkiä : Henkilön etu ja sukunimi    
+
+Tunnus : merkkijono max 10 merkkiä : Käyttäjätunnus               
+
+Salasana :merkkijono max 10 merkkiä : Kirjautumisen salasana
+
+
+
+**Tietokohde: Askare** 
+
+*Askareella on pakko olla nimi sekä Laatimis aika. Askareella ei tarvitse olla askareaihetta mikäli sillä ei ole yhtäkään aihetta. Tärkeysluokitusta tai askareen päivämäärää ei ole pakko tehdä. Lisätiedot voi myös halutessaan jättää tyhjäksi.*
+
+Nimi : merkkijono max 70 merkkiä : Askareen nimi
+
+Askareaihe: List askareryhmistä : Askareen aiherymien lista mikäli niitä on
+
+Tärkeysluokka: integer arvo 1-5 : 1 on tärkein ja 5 vähäpätöisin.
+
+Laatimis Aika: timestamp: Askareen laatimis aika
+
+Lisätiedot: merkkijono max 200 merkkiä: Askareeseen liittyviä mahdollisia lisätietoja  esim. osoite
+
+
+
+**Tietokohde: Aihe**
+
+*Aihe ei ole pakollinen. Askareelle voidaan antaa useampi aihe joita käytetään askareaiheessa.*
+
+Nimi: merkkijono max 70 merkkiä : Askareryhmän nimi esim. työ, puhelin numero
+
+
+**Tietokohde: Askareaihe**
+
+*Askareaihe on liitostaulu askareesta ja aiheesta. Sliitetään askareeseen jolla on vähintään yksi askareryhmä. Askareryhmälista voi vastata useamman askareen askareryhmälistaa.* 
+
+Lista: List askareryhmistä : askareryhmien lista
+
+**Tietokohde: Tärkeysluokka**
+
+*Askareelle voi halutessaan antaa tärkeysluokan. Askareella voi olla vain yksi tärkeysluokka ja se on integer arvo 1-5.
+
+Tärkeysluokka: integer arvo 1-5: Tärkeysluokka askareelle missä 1 on tärkein ja 5 vähäpätöisin
+
+               
+**Tietokohde: Ylläpitäjä**
+
+*Ylläpitäjällä on oltava nimi, tunnus sekä salasana*
+
+Nimi: merkkijono max 70 merkkiä: Ylläpitäjän nimi 
+
+Tunnus : merkkijono max 10 merkkiä : Käyttäjätunnus               
+
+Salasana :merkkijono max 10 merkkiä : Kirjautumisen salasana
 

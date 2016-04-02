@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muistilista</h1>
+
+  <p>
+    <a href="#" class="btn btn-success">Lisää askare</a>
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Askare</th>
+        <th>Askareaihe</th>
+        <th>Tärkeysluokka</th>
+        <th>Lisäyspäivä</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      
+      <tr>
+        <!--Tähän listataan askareet-->
+        <th>nimi</th>
+        <th>aiheet esim työ,puh</th>
+        <th>4</th>
+        <th>23.03.2016</th>
+        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
