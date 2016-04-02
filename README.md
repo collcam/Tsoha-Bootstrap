@@ -3,7 +3,7 @@
 
 * [Linkki dokumentaatiooni](https://github.com/collcam/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.md)
 * [Käyttötapaus kaavioni](https://raw.githubusercontent.com/collcam/Tsoha-Bootstrap/master/doc/Tikalabrakäyttö.png)
-* [Relaatiotietokantakaavio] (https://raw.githubusercontent.com/collcam/Tsoha-Bootstrap/master/doc/Muistilista relaatiotietokantakaavio.png)
+* [Relaatiotietokantakaavio] (https://github.com/collcam/Tsoha-Bootstrap/blob/master/doc/Muistilista%20relaatiotietokanta%20kaavio.png)
 * [Järjestelmän tietosisältö kaavio](https://raw.githubusercontent.com/collcam/Tsoha-Bootstrap/master/doc/Tikalabrakäyttörakenne.png)
 
 
