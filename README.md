@@ -3,7 +3,9 @@
 
 * [Linkki dokumentaatiooni](https://github.com/collcam/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.md)
 * [Käyttötapaus kaavioni](https://raw.githubusercontent.com/collcam/Tsoha-Bootstrap/master/doc/Tikalabrakäyttö.png)
-*[Järjestelmän tietosisältö kaavio](https://raw.githubusercontent.com/collcam/Tsoha-Bootstrap/master/doc/Tikalabrakäyttörakenne.png)
+* [Järjestelmän tietosisältö kaavio](https://raw.githubusercontent.com/collcam/Tsoha-Bootstrap/master/doc/Tikalabrakäyttörakenne.png)
+
+
 ## Työn aihe
 
 Muistilista on ytimekkäästi sanottuna muistiväline, joka sopii kaikille varhaisdementiasta kärsiville, kuten opiskelijoille joille deadlinen pitäminen tuntuu olevan mahdotonta.
