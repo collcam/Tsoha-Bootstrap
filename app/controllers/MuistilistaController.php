@@ -15,7 +15,7 @@ class MuistilistaController extends BaseController{
     }public static function Listaa_askareet(){
      View::make('listaa_askareet.html');
     }public static function Askare_esittelysivu(){
-    View::make('askare_esittelysivu'); 
+    View::make('askare_esittelysivu.html'); 
     
     }public static function kirjautuminen(){
     View::make('kirjautuminen.html'); 

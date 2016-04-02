@@ -5,12 +5,19 @@ nimi varchar(70) not null,
 salasana varchar(20) not null
 );
 
+create table Yllapitaja(
+kayttajatunnus serial primary key,
+nimi varchar(70) not null,
+salasana varchar(20) not null
+);
+
 create table Askare(
 id int primary key unique,
 nimi varchar(70) not null,
 laatimisaika timestamp not null,
-tarkeysluokka integer,
+tarkeysluokka int,
 lisatiedot varchar(100)
+
 
 );
 
@@ -24,12 +31,12 @@ luokka int primary key
 );
 
 create table Askareaihe(
-askare_id int not null,
-aihe_id int not null,
+askare int not null,
+aihe int not null,
 
 
-foreign key(askare_id) references Askare(id),
-foreign key(aihe_id) references Aihe(id)
+foreign key(askare) references Askare(id),
+foreign key(aihe) references Aihe(id)
 );
 
 

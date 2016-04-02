@@ -19,4 +19,7 @@
   $routes->get('/muokkaa', function() {
       MuistilistaController::Askare_muokkaussivu();
   });
+   $routes->get('/esittelysivu', function() {
+      MuistilistaController::Askare_esittelysivu();
+  });
   
