@@ -18,8 +18,24 @@
   });
   $routes->get('/muokkaa', function() {
       MuistilistaController::Askare_muokkaussivu();
+  });$routes->get('/askare', function() {
+      AskareController::index();
+  }); 
+  
+  $routes->post('/askare', function(){
+      AskareController::store();  
   });
-   $routes->get('/esittelysivu', function() {
-      MuistilistaController::Askare_esittelysivu();
+  
+  
+  $routes->get('/askare/new', function(){
+      AskareController::create();  
   });
+   $routes->get('/askare/:id', function($id) {
+       AskareController::show($id);
+  });
+  $routes->get('/hiekkalaatikko', function() {
+  HelloWorldController::sandbox();
+  });
+  
+  
   

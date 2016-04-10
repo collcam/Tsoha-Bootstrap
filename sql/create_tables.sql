@@ -12,9 +12,9 @@ salasana varchar(20) not null
 );
 
 create table Askare(
-id int primary key unique,
+id serial primary key ,
 nimi varchar(70) not null,
-laatimisaika timestamp not null,
+laatimisaika Date not null,
 tarkeysluokka int,
 lisatiedot varchar(100)
 
@@ -22,7 +22,7 @@ lisatiedot varchar(100)
 );
 
 create table Aihe(
-id int primary key unique,
+id serial primary key,
 aihe varchar(70) not null
 );
 

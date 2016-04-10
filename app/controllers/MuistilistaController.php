@@ -1,6 +1,11 @@
 <?php
 
 class MuistilistaController extends BaseController{
+    public static function index(){
+        $askareet =  Askare::all();
+        
+        View::make('askare/index.html', array('askareet' =>$askareet));
+    }
     public static function etusivu(){
         View::make('etusivu.html');
     }public static function lisaaAskare(){

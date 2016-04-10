@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa Askaretta: Askareen nimi</h1>
+
+  <form>
+   
+  
+    <div class="form-group">
+      <label>Nimi</label>
+      <input type="text" class="form-control" value="">
+    </div>
+    <div class="form-group">
+      <label>Lisäyspäivä</label>
+      <input type="text" class="form-control" value="">
+    </div>
+    <div class="form-group">
+      <label>Tärkeysluokka</label>
+      <input type="text" class="form-control" value="">
+    </div>
+      <div class="form-group">
+      <label>Askareaihe</label>
+      <input type="text" class="form-control" value="">
+    </div>
+    <div class="form-group">
+      <label>Lisätiedot</label>
+      <textarea class="form-control">   Askareen lisätiedot tähän     
+      </textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+      <div class="form-group">
+      <button type="submit" class="btn btn-primary">Peru muutokset</button>
+    </div>
+  </form>
+{% endblock %}

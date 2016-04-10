@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+ <div class="alert alert-success">
+          {{message}}
+        </div>
+  <h1>{{askare.nimi}}</h1>
+  <!-- Painikkeet tähän -->
+  <p>
+    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+  </p>
+  <!-- Tiedot tulee listana tähän -->
+  <ul>
+    <li><strong>Lisäyspäivä:</strong>{{askare.laatimisaika}}</li>
+    <li><strong>Tärkeysluokka:</strong> {{askare.tarkeysluokka}}</li>
+    <li><strong>Askareaihe:</strong> </li>
+    <li><strong>id:</strong>{{askare.id}} </li>
+  </ul>
+  <!-- Kuvaus tulee tähän -->
+  <p>
+      askareen lisätiedot tähän
+    </p>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Lisätäänpä askare Muistilistaasi</h1>
+
+  <form method="post" action="{{base_path}}/askare">
+    <div class="form-group">
+      <label>Nimi</label>
+      <input type="text" name="nimi" class="form-control">
+    </div>
+      
+      <div class="form-group">
+      <label>Tärkeysluokka</label>
+      <input type="text" name="tarkeysluokka" class="form-control">
+    </div>
+      
+      
+
+    <div class="form-group">
+      <label>Askareaihe</label>
+      <input type="text" name="askareaihe" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Lisätiedot</label>
+      <textarea name="lisatiedot" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Lisää Askare</button>
+    </div>
+  </form>
+{% endblock %}
