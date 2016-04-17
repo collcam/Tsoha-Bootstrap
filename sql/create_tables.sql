@@ -23,7 +23,7 @@ lisatiedot varchar(100)
 
 create table Aihe(
 id serial primary key,
-aihe varchar(70) not null
+nimi varchar(70) not null
 );
 
 create table Tarkeysluokka(
@@ -31,12 +31,9 @@ luokka int primary key
 );
 
 create table Askareaihe(
-askare int not null,
-aihe int not null,
+askare_id INTEGER REFERENCES Askare(id) ,
+aihe_id INTEGER REFERENCES Aihe(id),
 
-
-foreign key(askare) references Askare(id),
-foreign key(aihe) references Aihe(id)
 );
 
 

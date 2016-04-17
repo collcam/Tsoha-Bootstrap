@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Lisätään aihe</h1>
+
+ 
+  <form>
+      <select nimi="Aiheet" multiple="multiple">
+          {%for aihe in aiheet%}  
+          
+          <option>{{aihe}}</option>
+      {%endfor %}
+      </select>
+  </form>

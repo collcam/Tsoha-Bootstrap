@@ -1,36 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Muokkaa Askaretta: Askareen nimi</h1>
+  <h1>Askareen muokkaus</h1>
 
-  <form>
-   
+  {% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
   
-    <div class="form-group">
-      <label>Nimi</label>
-      <input type="text" class="form-control" value="">
-    </div>
-    <div class="form-group">
-      <label>Lisäyspäivä</label>
-      <input type="text" class="form-control" value="">
-    </div>
-    <div class="form-group">
-      <label>Tärkeysluokka</label>
-      <input type="text" class="form-control" value="">
-    </div>
+   <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Tärkeysluokka</th>
+                <th>Askareaihe</th>
+                <th>Lisätiedot</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+  <form method="post" action="{{base_path}}/askare/{{askare.id}}/muokkaa">
+      <td><input nimi="nimi" class="form-control" type="text" value="{{askare.nimi}}"></td>
+      <td><input nimi="tarkeysluokka" class="form-control" type="text" value="{{askare.tarkeysluokka}}"></td>
       <div class="form-group">
-      <label>Askareaihe</label>
-      <input type="text" class="form-control" value="">
+      
+      <td> <select class="form-control" nimi="aiheet[]" multiple="">
+          {% for aihe in aiheet %}  
+          
+          <option>{{aihe.nimi}}</option>
+      {%endfor %}
+      </select></td>
     </div>
-    <div class="form-group">
-      <label>Lisätiedot</label>
-      <textarea class="form-control">   Askareen lisätiedot tähän     
-      </textarea>
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary">Tallenna</button>
-    </div>
-      <div class="form-group">
-      <button type="submit" class="btn btn-primary">Peru muutokset</button>
-    </div>
+      
+      <td><input nimi="lisatiedot" class="form-control" type="text" value="{{askare.lisatiedot}}"></td>
+      
+      <td><button type="submit" class="btn btn-danger">Tallenna muokkaukset</button></td>
   </form>
-{% endblock %}
+   </tbody>
+</table>
+  {% endblock%}
+      

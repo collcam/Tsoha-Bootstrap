@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Lisätäänpä askare Muistilistaasi</h1>
-
+ {% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+  
   <form method="post" action="{{base_path}}/askare">
     <div class="form-group">
       <label>Nimi</label>
@@ -17,7 +26,12 @@
 
     <div class="form-group">
       <label>Askareaihe</label>
-      <input type="text" name="askareaihe" class="form-control">
+      <select name="aiheet" class="form-control" multiple="multiple">
+          {%for aihe in aiheet%}  
+          
+          <option>{{aihe.nimi}}</option>
+      {%endfor %}
+      </select>
     </div>
 
     <div class="form-group">
