@@ -1,7 +1,7 @@
 # Muistilistan esittelysivu
 
 
-* [Linkki dokumentaatiooni](https://github.com/collcam/Tsoha-Bootstrap/blob/master/doc/Muistilistadokumentaatio(1).pdf)
+* [Linkki dokumentaatiooni](https://github.com/collcam/Tsoha-Bootstrap/blob/master/doc/Muistilistadokumentaatio%20(1).pdf)
 
 ## Työn aihe
 
