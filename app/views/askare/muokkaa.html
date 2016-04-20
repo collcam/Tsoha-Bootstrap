@@ -25,11 +25,12 @@
         <tbody>
             <tr>
   <form method="post" action="{{base_path}}/askare/{{askare.id}}/muokkaa">
+      
       <td><input nimi="nimi" class="form-control" type="text" value="{{askare.nimi}}"></td>
       <td><input nimi="tarkeysluokka" class="form-control" type="text" value="{{askare.tarkeysluokka}}"></td>
       <div class="form-group">
       
-      <td> <select class="form-control" nimi="aiheet[]" multiple="">
+      <td> <select class="form-control" nimi="aiheet" multiple="">
           {% for aihe in aiheet %}  
           
           <option>{{aihe.nimi}}</option>

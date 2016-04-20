@@ -47,7 +47,7 @@ class Askare extends BaseModel {
         return null;
     }
 
-    public static function findAiheetAskareelle($id) {
+    public function findAiheetAskareelle($id) {
         $query = DB::connection()->prepare('SELECT * FROM AskareAihe WHERE aihe_id= :id');
         $query->execute(array('id' => $id));
         $rows = $query->fetch();

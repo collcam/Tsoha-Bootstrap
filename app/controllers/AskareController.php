@@ -48,7 +48,8 @@ class AskareController extends BaseController {
 
     public static function edit($id) {
         $askare = Askare::find($id);
-        View::make('askare/muokkaa.html', array('attributes' => $askare));
+        $aiheet=  Aihe::findAiheetAskareelle($id);
+        View::make('askare/muokkaa.html', array('askare' => $askare,'aiheet' =>$aiheet));
     }
 
     public static function update($id) {

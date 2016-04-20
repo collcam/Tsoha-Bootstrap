@@ -10,7 +10,7 @@ class User extends BaseModel {
     
     public static function authenticate($kayttajatunnus, $salasana) {
 
-        $query = DB::connection()->prepare('select * from user where kayttajatunnus = :kayttajatunnus and salasana = :salasana limit 1');
+        $query = DB::connection()->prepare('select * from Kayttaja where kayttajatunnus = :kayttajatunnus and salasana = :salasana limit 1');
         $query->execute(array('kayttajatunnus'=>$kayttajatunnus,'salasana'=>$salasana));
         $row = $query->fetch();
 
@@ -22,7 +22,7 @@ class User extends BaseModel {
     }
     
      public static function find($kayttajatunnus) {
-        $query = DB::connection()->prepare('select * from user where kayttajatunnus = :kayttajatunnus limit 1');
+        $query = DB::connection()->prepare('select * from Kayttaja where kayttajatunnus = :kayttajatunnus limit 1');
         $query->execute(array('kayttajatunnus'=>$kayttajatunnus));
         $row = $query->fetch();
         return new User(array('kayttajatunnus'=>$row['kayttajatunnus'],'salasana'=>$row['salasana']));

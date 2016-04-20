@@ -2,12 +2,15 @@
 {% block content %}
   <h1>Lisätään aihe</h1>
 
- 
-  <form>
-      <select nimi="Aiheet" multiple="multiple">
-          {%for aihe in aiheet%}  
-          
-          <option>{{aihe}}</option>
-      {%endfor %}
-      </select>
+
+  <form method="post" action="{{base_path}}/askare">
+    <div class="form-group">
+   <label>Nimi</label>
+      <input type="text" name="nimi" class="form-control">
+    </div>
+  <!-- Kuvaus tulee tähän -->
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary">Lisää Aihe</button>
+    </div>
   </form>
+{% endblock %}
