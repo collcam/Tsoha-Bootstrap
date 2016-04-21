@@ -23,11 +23,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-  <form method="post" action="{{base_path}}/askare/{{askare.id}}/muokkaa">
+            
+  <form method="post" action="{{base_path}}/askare/{{askare.id}}/edit">
       
-      <td><input nimi="nimi" class="form-control" type="text" value="{{askare.nimi}}"></td>
-      <td><input nimi="tarkeysluokka" class="form-control" type="text" value="{{askare.tarkeysluokka}}"></td>
+      <td><input name="nimi" class="form-control" type="text" value="{{askare.nimi}}"></td>
+      <td><input name="tarkeysluokka" class="form-control" type="text" value="{{askare.tarkeysluokka}}"></td>
       <div class="form-group">
       
       <td> <select class="form-control" nimi="aiheet" multiple="">
@@ -36,9 +36,9 @@
           <option>{{aihe.nimi}}</option>
       {%endfor %}
       </select></td>
-    </div>
+   
       
-      <td><input nimi="lisatiedot" class="form-control" type="text" value="{{askare.lisatiedot}}"></td>
+      <td><input name="lisatiedot" class="form-control" type="text" value="{{askare.lisatiedot}}"></td>
       
       <td><button type="submit" class="btn btn-danger">Tallenna muokkaukset</button></td>
   </form>

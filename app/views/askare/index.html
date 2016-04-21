@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
- 
+ {
   <h1>Muistilista</h1>
 
   <p>
@@ -28,7 +28,7 @@
         <td>{{askare.laatimisaika}}</td>
         
         
-        <th> <a href="{{base_path}}/askare/{{askare.id}}/muokkaa" class="btn btn-primary">Muokkaa</a>
+        <th> <a href="{{base_path}}/askare/{{askare.id}}/edit" class="btn btn-primary">Muokkaa</a>
  </th>
           </tr>
      {% endfor %}

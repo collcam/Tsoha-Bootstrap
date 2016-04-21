@@ -36,10 +36,10 @@
   $routes->get('/hiekkalaatikko', function() {
   HelloWorldController::sandbox();
   });
-  $routes->get('/askare/:id/muokkaa', function($id) {
+  $routes->get('/askare/:id/edit', function($id) {
       AskareController::edit($id);
   });
-  $routes->post('/askare/:id/muokkaa', function($id) {
+  $routes->post('/askare/:id/edit', function($id) {
       AskareController::update($id);
   });
   $routes->post('/askare/:id/destroy', function($id) {
@@ -49,9 +49,12 @@
       UserController::login();
   });
   $routes->post('/login', function() {
+      
       UserController::handle_login();
   });
-  
+  $routes->post('/logout', function() {
+      UserController::logout();
+  });
   
   
   

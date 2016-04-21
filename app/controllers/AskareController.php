@@ -3,20 +3,21 @@
 class AskareController extends BaseController {
 
     public static function index() {
-
+       self::check_logged_in();
         $askareet = Askare::all();
 
         View::make('askare/index.html', array('askareet' => $askareet));
     }
 
     public static function show($id) {
-
+        self::check_logged_in();
         $askare = Askare::find($id);
 
         View::make('askare/esittelysivu.html', array('askare' => $askare));
     }
 
     public static function store() {
+        self::check_logged_in();
         $params = $_POST;
         $askare = new Askare(array(
             'nimi' => $params['nimi'],
@@ -47,35 +48,44 @@ class AskareController extends BaseController {
     }
 
     public static function edit($id) {
+        self::check_logged_in();
         $askare = Askare::find($id);
         $aiheet=  Aihe::findAiheetAskareelle($id);
+        
         View::make('askare/muokkaa.html', array('askare' => $askare,'aiheet' =>$aiheet));
+        
     }
 
     public static function update($id) {
+       
+       self::check_logged_in();
         $params = $_POST;
-
+        
         $attributes = array(
+     
             'id' => $id,
             'nimi' => $params['nimi'],
             'tarkeysluokka' => $params['tarkeysluokka'],
-            //puuttuu askare aihe
             'lisatiedot' => $params['lisatiedot']
         );
+       
+         
+      //  Kint::dump($params);
+        $askare =new Askare($attributes);
         
-        $askare = new Askare($attributes);
         $errors = $askare->errors();
 
-        if (count($errors) > 0) {
+    if (count($errors) > 0) {
             View::make('askare/muokkaa.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
-            $askare->update();
+            $askare->update($id);
 
             Redirect::to('/askare/' . $askare->id, array('message' => 'Askare on nyt muokattu :D'));
         }
     }
 
     public static function destroy($id) {
+        self::check_logged_in();
         $askare = new Askare(array('id' => $id));
         $askare->destroy($id);
 

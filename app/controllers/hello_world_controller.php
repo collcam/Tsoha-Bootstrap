@@ -12,6 +12,7 @@ require 'app/models/Askare.php';
    
    $askare = Askare::find(1);
     $askareet = Askare::all();
+    
     // Kint-luokan dump-metodi tulostaa muuttujan arvon
     Kint::dump($askareet);
     Kint::dump($askare);

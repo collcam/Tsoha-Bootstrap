@@ -76,8 +76,10 @@ class Askare extends BaseModel {
     }
     public function update($id){
         $query = DB::connection()->prepare('UPDATE Askare set nimi =:nimi, tarkeysluokka =:tarkeysluokka, lisatiedot =:lisatiedot WHERE id= :id');
-        $query->execute(array('nimi'=>  $this->nimi, 'tarkeysluokka'=> $this->tarkeysluokka,'lisatiedot'=> $this->lisatiedot));
-        
+        $query->execute(array('nimi'=>  $this->nimi, 'tarkeysluokka'=> $this->tarkeysluokka,'lisatiedot'=> $this->lisatiedot, 'id'=> $id));
+        $row =$query->fetch();
+        Kint::trace();
+        Kint::dump($row);
     }
 
     public function validate_nimi() {

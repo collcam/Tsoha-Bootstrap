@@ -9,11 +9,12 @@ class User extends BaseModel {
     }
     
     public static function authenticate($kayttajatunnus, $salasana) {
-
+        
         $query = DB::connection()->prepare('select * from Kayttaja where kayttajatunnus = :kayttajatunnus and salasana = :salasana limit 1');
         $query->execute(array('kayttajatunnus'=>$kayttajatunnus,'salasana'=>$salasana));
+        
         $row = $query->fetch();
-
+        
         if($row) {
             return new User(array('kayttajatunnus'=>$row['kayttajatunnus'],'salasana'=>$row['salasana']));
         } else {
