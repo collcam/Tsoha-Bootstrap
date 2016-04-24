@@ -11,3 +11,7 @@ Muistilista muodostuu askareista. Askareelle voidaan antaa tärkeysluokka 1-5 jo
 
 Muistilistaan kirjaudutaan omilla tunnuksilla jolloin kaikilla on henkilökohtainen oma muistilistansa, ettet tule vahingossakaan tehdyksi kaverisi kurssityötä.
 Ympäristönä toimii users-pallin Apachella. Tuettu ohjelmointikieli on PHP. Kyseessä on vain yhdellä kannalla toimiva työ.
+
+##Kirjautuminen
+
+käyttäjä: cami  salasana: 0000
