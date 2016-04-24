@@ -2,7 +2,7 @@
 
 class User extends BaseModel {
     
-    public $kayttajatunnus, $salasana;
+    public $id, $kayttajatunnus, $salasana;
     
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -16,17 +16,17 @@ class User extends BaseModel {
         $row = $query->fetch();
         
         if($row) {
-            return new User(array('kayttajatunnus'=>$row['kayttajatunnus'],'salasana'=>$row['salasana']));
+            return new User(array('id'=>$row['id'], 'kayttajatunnus'=>$row['kayttajatunnus'],'salasana'=>$row['salasana']));
         } else {
             return null;
         }
     }
     
-     public static function find($kayttajatunnus) {
-        $query = DB::connection()->prepare('select * from Kayttaja where kayttajatunnus = :kayttajatunnus limit 1');
-        $query->execute(array('kayttajatunnus'=>$kayttajatunnus));
+     public static function find($id) {
+        $query = DB::connection()->prepare('select * from Kayttaja where id = :id limit 1');
+        $query->execute(array('id'=>$id));
         $row = $query->fetch();
-        return new User(array('kayttajatunnus'=>$row['kayttajatunnus'],'salasana'=>$row['salasana']));
+        return new User(array('id'=> $id, 'kayttajatunnus'=>$row['kayttajatunnus'],'salasana'=>$row['salasana']));
     }
 }
 

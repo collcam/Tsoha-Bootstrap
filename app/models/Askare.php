@@ -2,27 +2,31 @@
 
 class Askare extends BaseModel {
 
-    public $id, $nimi, $laatimisaika, $tarkeysluokka, $lisatiedot;
+    public $id, $nimi, $laatimisaika, $tarkeysluokka, $lisatiedot, $kayttaja_id;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
         $this->validators = array('validate_nimi','validate_tarkeysluokka');
     }
 
-    public static function all() {
-        $query = DB::connection()->prepare('SELECT* FROM Askare');
-        $query->execute();
+    public static function all($options) {
+        $query_string = 'SELECT * FROM Askare WHERE kayttaja_id = :kayttaja_id ';
+        $options = array('kayttaja_id' => $options['kayttaja_id']);
+         
+        if(isset($options['search'])){
+           die("tullaan tänne"); 
+            $query_string .= 'AND nimi LIKE :like';
+            $options['like'] = '%' . $options['search'] . '%';
+            
+        }
+        $query =DB::connection()->prepare($query_string);
+        $query->execute($options);
+        //die("päästiin");
         $rows = $query->fetchAll();
         $askareet = array();
 
         foreach ($rows as $row) {
-            $askareet[] = new Askare(array(
-                'id' => $row['id'],
-                'nimi' => $row['nimi'],
-                'laatimisaika' => $row['laatimisaika'],
-                'tarkeysluokka' => $row['tarkeysluokka'],
-                'lisatiedot' => $row['lisatiedot']
-            ));
+            $askareet[] = new Askare($row);
         }
         return $askareet;
     }
@@ -62,8 +66,8 @@ class Askare extends BaseModel {
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Askare (nimi, lisatiedot, tarkeysluokka, laatimisaika ) VALUES (:nimi, :lisatiedot, :tarkeysluokka, NOW()) RETURNING id');
-        $query->execute(array('nimi' => $this->nimi, 'lisatiedot' => $this->lisatiedot, 'tarkeysluokka' => $this->tarkeysluokka));
+        $query = DB::connection()->prepare('INSERT INTO Askare (kayttaja_id, nimi, lisatiedot, tarkeysluokka, laatimisaika ) VALUES (:kayttaja_id, :nimi, :lisatiedot, :tarkeysluokka, NOW()) RETURNING id');
+        $query->execute(array('kayttaja_id' => $this-> kayttaja_id, 'nimi' => $this->nimi, 'lisatiedot' => $this->lisatiedot, 'tarkeysluokka' => $this->tarkeysluokka));
         $row = $query->fetch();
         //    Kint::trace();
         // Kint::dump($row);

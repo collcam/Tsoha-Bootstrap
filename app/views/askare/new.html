@@ -26,11 +26,11 @@
 
     <div class="form-group">
       <label>Askareaihe</label>
-      <select name="aiheet" class="form-control" multiple="multiple">
-          {%for aihe in aiheet%}  
+      <select name="aiheet[]" class="form-control" multiple="">
+          {% for aihe in aiheet %}  
           
-          <option>{{aihe.nimi}}</option>
-      {%endfor %}
+          <option value="{{aihe.id}}"> {{aihe.nimi}}</option>
+      {% endfor %}
       </select>
     </div>
 
