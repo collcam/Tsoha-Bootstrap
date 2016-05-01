@@ -19,20 +19,20 @@ class Aihe extends BaseModel {
         }
         return $aiheet;
         
-}public static function findAiheetAskareelle($askare_id){
+}public static function findAiheidenNimetAskareelle($aihe_id){
     
-        $query = DB::connection()->prepare('SELECT * FROM Aihe');
-        $query->execute();
+        $query = DB::connection()->prepare('SELECT nimi FROM Aihe where id= :aihe_id');
+        $query->execute(array('aihe_id'=>$aihe_id));
         $rows = $query->fetchAll();
-        $askareaihe =array();
+        $aiheidenNimet =array();
         
         foreach ($rows as $row){
-            $askareaihe[] =new Aihe(array(
-                'nimi'=>$row['nimi'],
-                'id'=>$row['id']
+            $aiheidenNimet[] =new Aihe(array(
+                'nimi'=>$row['nimi']
+          
             ));
         }
-        return $askareaihe;
+        return $aiheidenNimet;
         
     }
 

@@ -40,7 +40,17 @@
        {% for askare in askareet %}
       <tr>
           <td><a href="{{base_path}}/askare/{{askare.id}}">{{askare.nimi}}</td>
-        <td>{{askare.askareaihe}}</td>
+        <td>{%for aihe in askareaiheet%}
+            {%for a in aihe %}
+            
+             {%if askare.id==a.askare_id %}
+            {{a.aihe_nimi}}
+            {% endif %}
+        
+            {% endfor %}
+           
+        {%endfor %}
+        </td>
         <td>{{askare.tarkeysluokka}}</td>
         <td>{{askare.laatimisaika}}</td>
         

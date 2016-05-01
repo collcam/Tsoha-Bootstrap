@@ -15,8 +15,15 @@ class AskareController extends BaseController {
        }
        
        $askareet = Askare::all($options);
-
-       View::make('askare/index.html', array('askareet' => $askareet));
+       $askareaiheet =array();
+       
+       foreach ($askareet as $askare){
+         $askareaiheet[] = AskareAihe::findAiheet($askare->id);  
+           
+       }Kint::dump($askareaiheet);
+      
+  
+       View::make('askare/index.html', array('askareet' => $askareet, 'askareaiheet'=>$askareaiheet));
     }
 
     public static function show($id) {
@@ -30,7 +37,7 @@ class AskareController extends BaseController {
         self::check_logged_in();
         $params = $_POST;
         
-      //  Kint::dump($_SESSION['user']);
+     //  Kint::dump($params['aiheet']);
         $askare = new Askare(array(
             
             'nimi' => $params['nimi'],
@@ -44,8 +51,8 @@ class AskareController extends BaseController {
         $errors= $askare->errors();
         if(count($errors) ==0){
          $askare->save();
-       // $mitaTulee= $params['aiheet[]'];
-         // AskareAihe::createConnections($askare->id, );
+        $mitaTulee= $params['aiheet'];
+         AskareAihe::createConnections($askare->id, $mitaTulee);
             Redirect::to('/askare/' . $askare->id, array('message' => 'Askareesi on lisätty Muistilistaan! :D'));
     
         }  else {
@@ -68,7 +75,7 @@ class AskareController extends BaseController {
     public static function edit($id) {
         self::check_logged_in();
         $askare = Askare::find($id);
-        $aiheet=  Aihe::findAiheetAskareelle($id);
+        $aiheet=  Aihe::findAiheidenNimetAskareelle($id);
         
         View::make('askare/muokkaa.html', array('askare' => $askare,'aiheet' =>$aiheet));
         

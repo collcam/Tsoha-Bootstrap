@@ -27,6 +27,25 @@ class User extends BaseModel {
         $query->execute(array('id'=>$id));
         $row = $query->fetch();
         return new User(array('id'=> $id, 'kayttajatunnus'=>$row['kayttajatunnus'],'salasana'=>$row['salasana']));
+    } 
+    
+    public function save() {
+        $query = DB::connection()->prepare('INSERT INTO User (kayttajatunnus, salasana) VALUES (:kayttajatunnus, :salasana) RETURNING id');
+        $query->execute(array('kayttajatunnus' => $this-> kayttajatunnus,'salasana'=>  $this->salasana));
+        $row = $query->fetch();
+        //    Kint::trace();
+        // Kint::dump($row);
+        $this->id = $row['id'];
+        
+    }public function validate_kayttajatunnus() {
+        $errors = array();
+        if ($this->kayttajatunnus == '' || $this->kayttajatunnus == null) {
+            $errors[] = 'Et voi jättää kayttajatunnusta tyhjäksi';
+        }
+        
+        return $errors;
     }
+
+   
 }
 
