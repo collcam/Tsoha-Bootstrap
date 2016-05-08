@@ -36,8 +36,10 @@ class AskareController extends BaseController {
     public static function store() {
         self::check_logged_in();
         $params = $_POST;
+         
+     Kint::dump($params);
+         //Kint::dump($$mitaTulee);
         
-     //  Kint::dump($params['aiheet']);
         $askare = new Askare(array(
             
             'nimi' => $params['nimi'],
@@ -46,14 +48,19 @@ class AskareController extends BaseController {
             'kayttaja_id' =>  $_SESSION['user']
             
         ));
-        Kint::dump($params);
-
+        
+ 
         $errors= $askare->errors();
+       
+    
         if(count($errors) ==0){
          $askare->save();
+    
         $mitaTulee= $params['aiheet'];
+       
          AskareAihe::createConnections($askare->id, $mitaTulee);
-            Redirect::to('/askare/' . $askare->id, array('message' => 'Askareesi on lisätty Muistilistaan! :D'));
+         
+         Redirect::to('/askare/' . $askare->id, array('message' => 'Askareesi on lisätty Muistilistaan! :D'));
     
         }  else {
            View::make('askare/new.html', array('errors' =>$errors, 'askare' =>$askare));

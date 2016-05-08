@@ -1,27 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Aiheet</h1>
-    <p>     
-        <a href="aihe/new" class="btn btn-default">Lisää aihe</a>  
-    </p>
+    <h1>Aihe</h1>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Nimi</th>
+                
                 <th></th>
                 <th></th>
             </tr>
         </thead>
-        <tbody>
-            {% for aihe in aiheet %}
+        <tbody>          
             <tr>
-                <td><a href="{{base_path}}/aihe/{{aihe.id}}">{{aihe.nimi}}</a></td>
-              <td><a href="{{base_path}}/aihe/{{aihe.id}}/edit" class="btn btn-default">Muokkaa</a></td>
+                <td>{{aihe.nimi}}</td>
+               
+                <td><a href="{{base_path}}/aihe/{{aihe.id}}/edit" class="btn btn-default">Muokkaa</a></td>
                 <form method="post" action="{{base_path}}/aihe/{{aihe.id}}/destroy">
                     <td><button class="btn btn-danger">Poista</button></td>
                 </form>
             </tr>
-            {% endfor %}
         </tbody>
     </table>
 {% endblock %}

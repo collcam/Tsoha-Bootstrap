@@ -6,7 +6,7 @@ class Askare extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_nimi','validate_tarkeysluokka');
+        $this->validators = array('validate_nimi','validate_tarkeysluokka','validate_aiheet');
     }
 
     public static function all($options) {
@@ -42,7 +42,6 @@ class Askare extends BaseModel {
                 'nimi' => $row['nimi'],
                 'laatimisaika' => $row['laatimisaika'],
                 'tarkeysluokka' => $row['tarkeysluokka'],
-                //askareaihe puuttuu
                 'lisatiedot' => $row['lisatiedot']
             ));
 
@@ -66,13 +65,17 @@ class Askare extends BaseModel {
     }
 
     public function save() {
+        
+        
         $query = DB::connection()->prepare('INSERT INTO Askare (kayttaja_id, nimi, lisatiedot, tarkeysluokka, laatimisaika ) VALUES (:kayttaja_id, :nimi, :lisatiedot, :tarkeysluokka, NOW()) RETURNING id');
+       
         $query->execute(array('kayttaja_id' => $this-> kayttaja_id, 'nimi' => $this->nimi, 'lisatiedot' => $this->lisatiedot, 'tarkeysluokka' => $this->tarkeysluokka));
+     
         $row = $query->fetch();
         //    Kint::trace();
-        // Kint::dump($row);
+        //Kint::dump($row);
         $this->id = $row['id'];
-        
+       
     }public function destroy($id){
          $query = DB::connection()->prepare('DELETE FROM Askare WHERE id= :id');
         $query->execute(array('id'=>$id));
@@ -82,8 +85,8 @@ class Askare extends BaseModel {
         $query = DB::connection()->prepare('UPDATE Askare set nimi =:nimi, tarkeysluokka =:tarkeysluokka, lisatiedot =:lisatiedot WHERE id= :id');
         $query->execute(array('nimi'=>  $this->nimi, 'tarkeysluokka'=> $this->tarkeysluokka,'lisatiedot'=> $this->lisatiedot, 'id'=> $id));
         $row =$query->fetch();
-        Kint::trace();
-        Kint::dump($row);
+      //  Kint::trace();
+        //Kint::dump($row);
     }
 
     public function validate_nimi() {
@@ -96,6 +99,10 @@ class Askare extends BaseModel {
 
     public function validate_tarkeysluokka() {
         $errors = array();
+        
+      if($this->tarkeysluokka==null || $this->tarkeysluokka==''){
+               $errors[] = 'Et voi jättää askareen tärkeysluokkaa tyhjäksi';
+        }
         if($this->tarkeysluokka!=null){
             $tarkeysInt=(integer) $this->tarkeysluokka;
             
@@ -104,6 +111,13 @@ class Askare extends BaseModel {
         }
         }
         return $errors;
-    }
+    } public  function validate_aiheet(){
+    $errors =array();
+       
+      if(!isset($_POST['aiheet'])){
+               $errors[] = 'Valitse vähintään 1 askareaihe';
+        }return $errors;
+    
+}
 
 }

@@ -55,6 +55,28 @@
   $routes->post('/logout', function() {
       UserController::logout();
   });
+  $routes->get('/aihe', function() {
+      AiheController::index();
+  });
+  $routes->post('/aihe', function() {
+      AiheController::store();
+  });
+  
+  $routes->get('/aihe/new', function(){
+      AiheController::create();
+  });
+   $routes->get('/aihe/:id', function($id) {
+       AiheController::show($id);
+  });
+   $routes->get('/aihe/:id/edit', function($id) {
+       AiheController::edit($id);
+  });
+  $routes->post('/aihe/:id/edit', function($id) {
+      AiheController::update($id);
+  });
+  $routes->post('/aihe/:id/destroy', function($id) {
+      AiheController::destroy($id);
+  });
   
   
   
